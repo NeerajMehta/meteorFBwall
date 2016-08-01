@@ -1,0 +1,42 @@
+﻿<template name="story">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            {{#if status}}
+                <h4> <a href="/profile/{{creatorUsername}}"><img src="/img/logo.png" width="28px;" height="28px;"> {{creatorName}} </a></h4>
+            {{else}}
+                <h4>
+                    <a href="/profile/{{creatorUsername}}">
+                        <img src="~/public/img/logo.png" alt="" width="28px;" height="28px;">
+                        {{creatorName}}
+                    </a>
+                    <span class="glyphicon glyphicon-arrow-right"></span>
+                    <a href="/profile/{{createdForUsername}}">
+                        <img src="~/public/img/logo.png" alt="" width="28px;" height="28px;">
+                        {{createdForName}}
+                    </a>
+                </h4>
+            {{/if}}
+        </div>
+        <div class="panel-body">
+            <h4>{{storyText}}</h4>
+            <div class="clearfix"></div>
+            <form>
+                <label>{{likeCount _id}}</label>
+                <div class="input-group">
+                    <span class="input-group-addon like" style="cursor:pointer;">+1</span>
+                    <input class="form-control" id="new_comment" placeholder="add comment">
+                    <span class="input-group-addon  new-comment">add</span>
+                </div>                               
+            </form>
+            {{#if getComment _id}}
+            <h6>                
+                <a href="/profile/{{creatorUsername}}" style="color:darkblue">
+                    <img src="/img/logo.png" alt="" width="28px;" height="28px;">
+                    {{creatorName}}
+                </a>
+                {{getComment _id}}
+            </h6> 
+            {{/if}}
+        </div>
+    </div>
+</template>
